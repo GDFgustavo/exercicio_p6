@@ -15,6 +15,10 @@ export const GlobalCss = createGlobalStyle`
     list-style: none;
   }
 
+  body {
+    background-color: ${cores.branco};
+  }
+
   .container {
     max-width: 1024px;
     width: 100%;
