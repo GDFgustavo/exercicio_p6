@@ -1,8 +1,13 @@
-import React from 'react'
-import './App.css'
+import Header from './components/Header'
+import { GlobalCss } from './styles'
 
 function App() {
-  return <div>olá mundo</div>
+  return (
+    <>
+      <GlobalCss />
+      <Header />
+    </>
+  )
 }
 
 export default App
