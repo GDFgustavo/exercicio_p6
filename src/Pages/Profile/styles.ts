@@ -21,7 +21,8 @@ export const BackgroundProfile = styled(Background)`
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     padding-top: 40px;
-    gap: 276px;
+    column-gap: 270px;
+    font-weight: bold;
   }
 `
 
