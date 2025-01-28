@@ -1,11 +1,11 @@
-import { BackgroundFooter, Links, Link } from './styles'
+import { Container, Links, Link } from './styles'
 import logo from '../assets/images/logo.svg'
 import logoFacebook from '../assets/images/logo_facebook.png'
 import logoInstagram from '../assets/images/logo_instagram.png'
 import logoTwitter from '../assets/images/logo_twitter.png'
 
 const Footer = () => (
-  <BackgroundFooter>
+  <Container>
     <div>
       <img src={logo} alt="Efood" />
     </div>
@@ -35,7 +35,7 @@ const Footer = () => (
         estabelecimento contratado.
       </p>
     </div>
-  </BackgroundFooter>
+  </Container>
 )
 
 export default Footer

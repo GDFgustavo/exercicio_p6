@@ -1,14 +1,13 @@
 import styled from 'styled-components'
 import { cores } from '../styles'
 
-export const BackgroundFooter = styled.div`
+export const Container = styled.footer`
   height: 298px;
   background-color: ${cores.bege};
 
   div {
     display: flex;
     justify-content: center;
-    align-items: center;
   }
 
   img {

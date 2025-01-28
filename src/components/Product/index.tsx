@@ -1,17 +1,28 @@
 import { Button, Card, Description, Infos, Titulo } from './styles'
 
 import Tag from '../Tag'
+import { Link } from 'react-router-dom'
 
 type Props = {
   title: string
   infos: string[]
   description: string
   image: string
-  reviews: string
+  reviews?: string
+  button: string
+  card?: boolean
 }
 
-const Product = ({ title, infos, description, image, reviews }: Props) => (
-  <Card>
+const Product = ({
+  title,
+  infos,
+  description,
+  image,
+  reviews,
+  button,
+  card
+}: Props) => (
+  <Card card={card}>
     <img src={image} alt="Efood" />
     <Infos>
       {infos.map((info) => (
@@ -19,12 +30,14 @@ const Product = ({ title, infos, description, image, reviews }: Props) => (
       ))}
     </Infos>
     <div className="container">
-      <Titulo>
+      <Titulo card={card}>
         {title}
-        <img src={reviews} alt="Reviews" />
+        {reviews && <img src={reviews} alt="Reviews" />}
       </Titulo>
-      <Description>{description}</Description>
-      <Button>Saiba mais</Button>
+      <Description card={card}>{description}</Description>
+      <Link to="/profile">
+        <Button card={card}>{button}</Button>
+      </Link>
     </div>
   </Card>
 )

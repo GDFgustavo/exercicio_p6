@@ -2,14 +2,15 @@ import Food from '../models/Food'
 import Product from '../Product'
 import { Container, List } from './styles'
 
-type Props = {
+export type Props = {
   foods: Food[]
+  grid?: boolean
 }
 
-const ProductList = ({ foods }: Props) => (
+const ProductList = ({ foods, grid }: Props) => (
   <Container>
     <div className="container">
-      <List>
+      <List grid={grid}>
         {foods.map((foods) => (
           <Product
             key={foods.id}
@@ -18,6 +19,8 @@ const ProductList = ({ foods }: Props) => (
             description={foods.description}
             image={foods.image}
             reviews={foods.reviews}
+            button={foods.button}
+            card={foods.card}
           />
         ))}
       </List>
