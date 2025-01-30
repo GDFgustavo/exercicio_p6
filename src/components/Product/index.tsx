@@ -10,7 +10,7 @@ type Props = {
   image: string
   reviews?: string
   button: string
-  card?: boolean
+  card: boolean
 }
 
 const Product = ({
@@ -22,7 +22,7 @@ const Product = ({
   button,
   card
 }: Props) => (
-  <Card card={card}>
+  <Card cardStyles={card}>
     <img src={image} alt="Efood" />
     <Infos>
       {infos.map((info) => (
@@ -30,13 +30,13 @@ const Product = ({
       ))}
     </Infos>
     <div className="container">
-      <Titulo card={card}>
+      <Titulo cardStyles={card}>
         {title}
         {reviews && <img src={reviews} alt="Reviews" />}
       </Titulo>
-      <Description card={card}>{description}</Description>
+      <Description cardStyles={card}>{description}</Description>
       <Link to="/profile">
-        <Button card={card}>{button}</Button>
+        <Button cardStyles={card}>{button}</Button>
       </Link>
     </div>
   </Card>

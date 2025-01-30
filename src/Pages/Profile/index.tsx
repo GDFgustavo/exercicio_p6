@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-import { BackgroundProfile, Imagem, Overlay, SubTitle, Title } from './styles'
+import { BannerProfile, Imagem, Items, SubTitle, Title } from './styles'
 import logo from '../../assets/images/logo.svg'
 import banner from '../../assets/images/fundo.png'
 import DolceVita from '../../assets/images/la_dolce_vita_trattoria.png'
@@ -74,9 +74,9 @@ const foods: Food[] = [
 
 const Profile = () => (
   <>
-    <BackgroundProfile style={{ backgroundImage: `url(${banner})` }}>
+    <BannerProfile style={{ backgroundImage: `url(${banner})` }}>
       <div className="container">
-        <ul>
+        <Items>
           <li>
             <h4>Restaurantes</h4>
           </li>
@@ -88,11 +88,10 @@ const Profile = () => (
           <li>
             <a href="#">0 produto(s) no carrinho</a>
           </li>
-        </ul>
+        </Items>
       </div>
-    </BackgroundProfile>
+    </BannerProfile>
     <Imagem style={{ backgroundImage: `url(${DolceVita})` }}>
-      <Overlay />
       <div className="container">
         <SubTitle>Italiana</SubTitle>
         <Title>La Dolce Vita Trattoria</Title>

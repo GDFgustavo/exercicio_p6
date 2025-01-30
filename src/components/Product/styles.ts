@@ -2,15 +2,16 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
-export type PropsStyles = {
-  card?: boolean
+type PropsStyles = {
+  cardStyles: boolean
 }
 
 export const Card = styled.div<PropsStyles>`
-  background-color: ${(props) => (props.card ? cores.branco : cores.rosa)};
+  background-color: ${(props) =>
+    props.cardStyles ? cores.branco : cores.rosa};
   position: relative;
   margin-bottom: 48px;
-  border: 8px solid ${(props) => (props.card ? '0px' : cores.rosa)};
+  border: 8px solid ${(props) => (props.cardStyles ? '0px' : cores.rosa)};
 
   .container {
     padding: 8px;
@@ -29,7 +30,7 @@ export const Card = styled.div<PropsStyles>`
 export const Titulo = styled.h2<PropsStyles>`
   display: flex;
   justify-content: space-between;
-  color: ${(props) => (props.card ? cores.rosa : cores.bege)};
+  color: ${(props) => (props.cardStyles ? cores.rosa : cores.bege)};
   font-size: 16px;
   font-weight: 700;
   margin-top: 8px;
@@ -37,7 +38,7 @@ export const Titulo = styled.h2<PropsStyles>`
 `
 
 export const Description = styled.p<PropsStyles>`
-  color: ${(props) => (props.card ? cores.rosa : cores.bege)};
+  color: ${(props) => (props.cardStyles ? cores.rosa : cores.bege)};
   font-size: 14px;
   line-height: 22px;
   margin-bottom: 16px;
@@ -50,8 +51,8 @@ export const Infos = styled.div`
 `
 
 export const Button = styled.div<PropsStyles>`
-  background-color: ${(props) => (props.card ? cores.rosa : cores.bege)};
-  color: ${(props) => (props.card ? cores.bege : cores.rosa)};
+  background-color: ${(props) => (props.cardStyles ? cores.rosa : cores.bege)};
+  color: ${(props) => (props.cardStyles ? cores.bege : cores.rosa)};
   font-size: 14px;
   font-weight: 700;
   padding: 4px 8px;

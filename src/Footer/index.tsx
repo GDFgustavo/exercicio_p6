@@ -1,4 +1,4 @@
-import { Container, Links, Link } from './styles'
+import { Container, Links } from './styles'
 import logo from '../assets/images/logo.svg'
 import logoFacebook from '../assets/images/logo_facebook.png'
 import logoInstagram from '../assets/images/logo_instagram.png'
@@ -12,19 +12,19 @@ const Footer = () => (
     <div>
       <Links>
         <li>
-          <Link>
+          <a>
             <img src={logoInstagram} alt="Instagram" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link>
+          <a>
             <img src={logoFacebook} alt="Facebook" />
-          </Link>
+          </a>
         </li>
         <li>
-          <Link>
+          <a>
             <img src={logoTwitter} alt="Twitter" />
-          </Link>
+          </a>
         </li>
       </Links>
     </div>

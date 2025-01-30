@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import { Background } from '../../components/Header/styles'
 import { cores } from '../../styles'
 
-export const BackgroundProfile = styled(Background)`
+export const BannerProfile = styled(Background)`
   width: 100%;
   height: 170px;
   color: ${cores.rosa};
@@ -15,15 +15,14 @@ export const BackgroundProfile = styled(Background)`
   img {
     margin: 0;
   }
-
-  ul {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    padding-top: 40px;
-    column-gap: 270px;
-    font-weight: bold;
-  }
+`
+export const Items = styled.ul`
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding-top: 40px;
+  column-gap: 270px;
+  font-weight: bold;
 `
 
 export const Imagem = styled.div`
@@ -34,20 +33,20 @@ export const Imagem = styled.div`
   background-position: center;
   position: relative;
 
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
   .container {
-    z-index: 2;
+    z-index: 1;
     position: relative;
   }
-`
-
-export const Overlay = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.5);
-  z-index: 1;
 `
 
 export const SubTitle = styled.p`

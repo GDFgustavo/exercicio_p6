@@ -32,8 +32,8 @@ export const Links = styled.ul`
   li {
     margin-right: 8px;
   }
-`
 
-export const Link = styled.a`
-  text-decoration: none;
+  a {
+    text-decoration: none;
+  }
 `
