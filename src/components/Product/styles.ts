@@ -56,6 +56,7 @@ export const Button = styled.div<PropsStyles>`
   font-size: 14px;
   font-weight: 700;
   padding: 4px 8px;
+  width: ${(props) => (props.cardStyles ? '' : '100%')};
   display: inline-block;
   cursor: pointer;
 `
