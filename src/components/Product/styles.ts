@@ -3,20 +3,16 @@ import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 type PropsStyles = {
-  cardStyles: boolean
+  cardStyles?: 'cardDefault' | 'cardProfile'
 }
 
 export const Card = styled.div<PropsStyles>`
   background-color: ${(props) =>
-    props.cardStyles ? cores.branco : cores.rosa};
+    props.cardStyles === 'cardDefault' ? cores.branco : cores.rosa};
   position: relative;
   margin-bottom: 48px;
-  border: 8px solid ${(props) => (props.cardStyles ? '0px' : cores.rosa)};
-
-  .container {
-    padding: 8px;
-    border: 1px solid ${cores.rosa};
-  }
+  border: 8px solid
+    ${(props) => (props.cardStyles === 'cardDefault' ? '0px' : cores.rosa)};
 
   img {
     display: block;
@@ -26,11 +22,16 @@ export const Card = styled.div<PropsStyles>`
     margin-right: 8px;
   }
 `
+export const CardContent = styled.div<PropsStyles>`
+  padding: ${(props) => (props.cardStyles === 'cardDefault' ? '8px' : '0px')};
+  border: 1px solid ${cores.rosa};
+`
 
 export const Titulo = styled.h2<PropsStyles>`
   display: flex;
   justify-content: space-between;
-  color: ${(props) => (props.cardStyles ? cores.rosa : cores.bege)};
+  color: ${(props) =>
+    props.cardStyles === 'cardDefault' ? cores.rosa : cores.bege};
   font-size: 16px;
   font-weight: 700;
   margin-top: 8px;
@@ -38,7 +39,8 @@ export const Titulo = styled.h2<PropsStyles>`
 `
 
 export const Description = styled.p<PropsStyles>`
-  color: ${(props) => (props.cardStyles ? cores.rosa : cores.bege)};
+  color: ${(props) =>
+    props.cardStyles === 'cardDefault' ? cores.rosa : cores.bege};
   font-size: 14px;
   line-height: 22px;
   margin-bottom: 16px;
@@ -51,12 +53,16 @@ export const Infos = styled.div`
 `
 
 export const Button = styled.div<PropsStyles>`
-  background-color: ${(props) => (props.cardStyles ? cores.rosa : cores.bege)};
-  color: ${(props) => (props.cardStyles ? cores.bege : cores.rosa)};
+  background-color: ${(props) =>
+    props.cardStyles === 'cardDefault' ? cores.rosa : cores.bege};
+  color: ${(props) =>
+    props.cardStyles === 'cardDefault' ? cores.bege : cores.rosa};
   font-size: 14px;
   font-weight: 700;
+  text-align: ${(props) =>
+    props.cardStyles === 'cardDefault' ? '' : 'center'};
   padding: 4px 8px;
-  width: ${(props) => (props.cardStyles ? '' : '100%')};
+  width: ${(props) => (props.cardStyles === 'cardDefault' ? '' : '100%')};
   display: inline-block;
   cursor: pointer;
 `

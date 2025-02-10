@@ -1,4 +1,4 @@
-import { Button, Card, Description, Infos, Titulo } from './styles'
+import { Button, Card, CardContent, Description, Infos, Titulo } from './styles'
 
 import Tag from '../Tag'
 import { Link } from 'react-router-dom'
@@ -9,8 +9,8 @@ type Props = {
   description: string
   image: string
   reviews?: string
-  button: string
-  card: boolean
+  card: 'cardDefault' | 'cardProfile'
+  onClick?: () => void
 }
 
 const Product = ({
@@ -19,26 +19,32 @@ const Product = ({
   description,
   image,
   reviews,
-  button,
-  card
+  card,
+  onClick
 }: Props) => (
   <Card cardStyles={card}>
-    <img src={image} alt="Efood" />
+    <img src={image} alt="Foods" />
     <Infos>
       {infos.map((info) => (
         <Tag key={info}>{info}</Tag>
       ))}
     </Infos>
-    <div className="container">
+    <CardContent cardStyles={card}>
       <Titulo cardStyles={card}>
         {title}
         {reviews && <img src={reviews} alt="Reviews" />}
       </Titulo>
       <Description cardStyles={card}>{description}</Description>
-      <Link to="/profile">
-        <Button cardStyles={card}>{button}</Button>
-      </Link>
-    </div>
+      {card === 'cardDefault' ? (
+        <Link to="/profile">
+          <Button cardStyles={card}>Saiba mais</Button>
+        </Link>
+      ) : (
+        <Button cardStyles={card} onClick={onClick}>
+          Mais detalhes
+        </Button>
+      )}
+    </CardContent>
   </Card>
 )
 

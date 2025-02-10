@@ -8,6 +8,6 @@ export const Container = styled.section`
 export const List = styled.ul<Omit<Props, 'foods'>>`
   display: grid;
   grid-template-columns: ${(props) =>
-    props.grid ? '1fr 1fr ' : '320px 320px 320px'};
-  column-gap: ${(props) => (props.grid ? '80px' : '32px')};
+    props.grid === 'two' ? '1fr 1fr ' : 'repeat(3, 320px)'};
+  column-gap: ${(props) => (props.grid === 'two' ? '80px' : '32px')};
 `

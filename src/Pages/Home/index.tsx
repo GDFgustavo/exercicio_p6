@@ -15,8 +15,7 @@ const foods: Food[] = [
     infos: ['Destaque da semana', 'Japonesa'],
     image: HiokiSushi,
     reviews: Reviews4_9,
-    button: 'Saiba mais',
-    card: true
+    card: 'cardDefault'
   },
   {
     id: 2,
@@ -26,8 +25,7 @@ const foods: Food[] = [
     infos: ['Italiana'],
     image: DolceVita,
     reviews: Reviews4_6,
-    button: 'Saiba mais',
-    card: true
+    card: 'cardDefault'
   },
   {
     id: 3,
@@ -37,8 +35,7 @@ const foods: Food[] = [
     infos: ['Italiana'],
     image: DolceVita,
     reviews: Reviews4_6,
-    button: 'Saiba mais',
-    card: true
+    card: 'cardDefault'
   },
   {
     id: 4,
@@ -48,8 +45,7 @@ const foods: Food[] = [
     infos: ['Italiana'],
     image: DolceVita,
     reviews: Reviews4_6,
-    button: 'Saiba mais',
-    card: true
+    card: 'cardDefault'
   },
   {
     id: 5,
@@ -59,8 +55,7 @@ const foods: Food[] = [
     infos: ['Italiana'],
     image: DolceVita,
     reviews: Reviews4_6,
-    button: 'Saiba mais',
-    card: true
+    card: 'cardDefault'
   },
   {
     id: 6,
@@ -70,15 +65,14 @@ const foods: Food[] = [
     infos: ['Italiana'],
     image: DolceVita,
     reviews: Reviews4_6,
-    button: 'Saiba mais',
-    card: true
+    card: 'cardDefault'
   }
 ]
 
 const Home = () => (
   <>
     <Header />
-    <ProductList foods={foods} grid={true} />
+    <ProductList foods={foods} grid="two" />
   </>
 )
 

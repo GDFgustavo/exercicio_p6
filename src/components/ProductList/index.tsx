@@ -4,10 +4,11 @@ import { Container, List } from './styles'
 
 export type Props = {
   foods: Food[]
-  grid?: boolean
+  grid: 'two' | 'three'
+  onclick?: () => void
 }
 
-const ProductList = ({ foods, grid }: Props) => (
+const ProductList = ({ foods, grid, onclick }: Props) => (
   <Container>
     <div className="container">
       <List grid={grid}>
@@ -19,8 +20,8 @@ const ProductList = ({ foods, grid }: Props) => (
             description={foods.description}
             image={foods.image}
             reviews={foods.reviews}
-            button={foods.button}
             card={foods.card}
+            onClick={onclick}
           />
         ))}
       </List>
