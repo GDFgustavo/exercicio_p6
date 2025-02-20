@@ -1,32 +1,58 @@
-import Food from '../models/Food'
-import Product from '../Product'
+import { CardapioItem, Foods } from '../../Pages/Home'
+import CardMenu from '../CardMenu'
+import CardRestaurants from '../CardRestaurants'
 import { Container, List } from './styles'
 
 export type Props = {
-  foods: Food[]
+  foods: Foods[]
+  cardapio: CardapioItem[]
   grid: 'two' | 'three'
-  onclick?: () => void
+  type?: 'restaurant'
+  onClick?: (id: number) => void
 }
 
-const ProductList = ({ foods, grid, onclick }: Props) => (
-  <Container>
-    <div className="container">
-      <List grid={grid}>
-        {foods.map((foods) => (
-          <Product
-            key={foods.id}
-            title={foods.title}
-            infos={foods.infos}
-            description={foods.description}
-            image={foods.image}
-            reviews={foods.reviews}
-            card={foods.card}
-            onClick={onclick}
-          />
-        ))}
-      </List>
-    </div>
-  </Container>
-)
+const ProductList = ({ foods, cardapio, grid, type, onClick }: Props) => {
+  const handleClick = (id: number) => {
+    if (onClick) {
+      onClick(id)
+    }
+  }
+
+  return (
+    <Container>
+      <div className="container">
+        {type === 'restaurant' ? (
+          <List grid={grid}>
+            {foods.map((foods) => (
+              <li key={foods.id}>
+                <CardRestaurants
+                  id={foods.id}
+                  title={foods.titulo}
+                  infos={foods.tipo}
+                  description={foods.descricao}
+                  image={foods.capa}
+                  reviews={foods.avaliacao}
+                />
+              </li>
+            ))}
+          </List>
+        ) : (
+          <List grid={grid}>
+            {cardapio.map((cardapio) => (
+              <li key={cardapio.id}>
+                <CardMenu
+                  title={cardapio.nome}
+                  description={cardapio.descricao}
+                  image={cardapio.foto}
+                  onClick={() => handleClick(cardapio.id)}
+                />
+              </li>
+            ))}
+          </List>
+        )}
+      </div>
+    </Container>
+  )
+}
 
 export default ProductList

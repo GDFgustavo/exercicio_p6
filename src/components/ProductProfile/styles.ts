@@ -28,6 +28,7 @@ export const Items = styled.ul`
 export const Imagem = styled.div`
   height: 280px;
   width: 100%;
+  object-fit: cover;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;

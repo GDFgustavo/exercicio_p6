@@ -1,79 +1,44 @@
-import { useState } from 'react'
-import PizzaMargue from '../../assets/images/pizza_marguerita.png'
+import { useEffect, useState } from 'react'
 
-import Food from '../../components/models/Food'
 import ProductDetails from '../../components/ProductDetails'
-import ProductList from '../../components/ProductList'
 import ProductProfile from '../../components/ProductProfile'
-
-const foods: Food[] = [
-  {
-    id: 1,
-    title: 'Pizza Marguerita',
-    infos: [],
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: PizzaMargue,
-    card: 'cardProfile'
-  },
-  {
-    id: 2,
-    title: 'Pizza Marguerita',
-    infos: [],
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: PizzaMargue,
-    card: 'cardProfile'
-  },
-  {
-    id: 3,
-    title: 'Pizza Marguerita',
-    infos: [],
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: PizzaMargue,
-    card: 'cardProfile'
-  },
-  {
-    id: 4,
-    title: 'Pizza Marguerita',
-    infos: [],
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: PizzaMargue,
-    card: 'cardProfile'
-  },
-  {
-    id: 5,
-    title: 'Pizza Marguerita',
-    infos: [],
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: PizzaMargue,
-    card: 'cardProfile'
-  },
-  {
-    id: 6,
-    title: 'Pizza Marguerita',
-    infos: [],
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: PizzaMargue,
-    card: 'cardProfile'
-  }
-]
+import { CardapioItem } from '../Home'
+import { useParams } from 'react-router-dom'
+import ProductList from '../../components/ProductList'
+import { MensageLoading } from '../../components/CardMenu/styles'
 
 const Profile = () => {
-  const [modal, setModal] = useState(false)
+  const { id } = useParams()
+  const [cardapio, setCardapio] = useState<CardapioItem[]>([])
+  const [selectedProduct, setSelectedProduct] = useState<CardapioItem>()
 
-  const openModal = () => setModal(true)
-  const closeModal = () => setModal(false)
+  const openModal = (id: number) =>
+    setSelectedProduct(cardapio.find((p) => p.id === id))
+
+  const closeModal = () => setSelectedProduct(undefined)
+
+  useEffect(() => {
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setCardapio(res.cardapio))
+  }, [id])
 
   return (
     <>
       <ProductProfile />
-      <ProductList foods={foods} grid="three" onclick={openModal} />
-      {modal && <ProductDetails onClick={closeModal} />}
+      {!cardapio ? (
+        <MensageLoading>Carregando</MensageLoading>
+      ) : (
+        <ProductList
+          grid="three"
+          onClick={openModal}
+          foods={[]}
+          cardapio={cardapio}
+        />
+      )}
+      {selectedProduct && (
+        <ProductDetails details={selectedProduct} onClick={closeModal} />
+      )}
     </>
   )
 }

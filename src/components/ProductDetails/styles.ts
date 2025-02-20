@@ -1,12 +1,7 @@
 import styled from 'styled-components'
-import {
-  Button,
-  Card,
-  CardContent,
-  Description,
-  Titulo
-} from '../Product/styles'
+import { CardContent } from '../CardMenu/styles'
 import { cores } from '../../styles'
+import { Button, Titulo, Description } from '../CardRestaurants/styles'
 
 export const Modal = styled.div`
   position: fixed;
@@ -34,11 +29,13 @@ export const ModalContent = styled.div`
   z-index: 1;
 `
 
-export const CardDetails = styled(Card)`
+export const CardDetails = styled.div`
+  position: relative;
   display: flex;
   margin-top: 0px;
+  background-color: ${cores.rosa};
   border: 32px solid ${cores.rosa};
-  position: relative;
+  margin-bottom: 0px;
 
   ${CardContent} {
     padding-top: 0;
@@ -56,10 +53,6 @@ export const CardDetails = styled(Card)`
     color: ${cores.branco};
   }
 
-  ${Button} {
-    margin-top: 20px;
-  }
-
   .close {
     position: absolute;
     top: -24px;
@@ -73,4 +66,10 @@ export const CardDetails = styled(Card)`
     margin-right: 24px;
     object-fit: cover;
   }
+`
+
+export const ButtonAddCart = styled(Button)`
+  background-color: ${cores.bege};
+  color: ${cores.rosa};
+  margin-top: 20px;
 `
