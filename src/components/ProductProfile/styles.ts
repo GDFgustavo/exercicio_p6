@@ -23,6 +23,10 @@ export const Items = styled.ul`
   padding-top: 40px;
   column-gap: 270px;
   font-weight: bold;
+
+  .cart {
+    cursor: pointer;
+  }
 `
 
 export const Imagem = styled.div`

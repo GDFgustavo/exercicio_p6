@@ -33,9 +33,10 @@ export const CardDetails = styled.div`
   position: relative;
   display: flex;
   margin-top: 0px;
+  margin-bottom: 0px;
   background-color: ${cores.rosa};
   border: 32px solid ${cores.rosa};
-  margin-bottom: 0px;
+  border-radius: 8px;
 
   ${CardContent} {
     padding-top: 0;
@@ -64,6 +65,7 @@ export const CardDetails = styled.div`
     width: 280px;
     height: 280px;
     margin-right: 24px;
+    border-radius: 8px;
     object-fit: cover;
   }
 `

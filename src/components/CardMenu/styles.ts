@@ -7,11 +7,13 @@ export const Card = styled.div`
   position: relative;
   margin-bottom: 48px;
   border: 8px solid ${cores.rosa};
+  border-radius: 8px;
 
   img {
     display: block;
     width: 100%;
     height: 217px;
+    border-radius: 8px;
     object-fit: cover;
   }
 `

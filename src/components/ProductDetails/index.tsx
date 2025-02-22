@@ -6,17 +6,27 @@ import { CardContent } from '../CardMenu/styles'
 import { CardapioItem } from '../../Pages/Home'
 import { Titulo, Description } from '../CardRestaurants/styles'
 
+import { add, open } from '../../store/reducers/cart'
+import { useDispatch } from 'react-redux'
+
 type Props = {
   onClick?: () => void
   details: CardapioItem
 }
 
+export const formataPreco = (price = 0) => {
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL'
+  }).format(price)
+}
+
 const ProductDetails = ({ onClick, details }: Props) => {
-  const formataPreco = (price = 0) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(price)
+  const dispatch = useDispatch()
+
+  const AddToCart = () => {
+    dispatch(add(details))
+    dispatch(open())
   }
 
   return (
@@ -36,7 +46,7 @@ const ProductDetails = ({ onClick, details }: Props) => {
                   <b>Serve:</b> {details.porcao}
                 </Description>
                 <Link to="#">
-                  <ButtonAddCart>
+                  <ButtonAddCart onClick={AddToCart}>
                     Adicionar ao carrinho - {formataPreco(details.preco)}
                   </ButtonAddCart>
                 </Link>

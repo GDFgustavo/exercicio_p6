@@ -1,50 +1,54 @@
+import { useDispatch, useSelector } from 'react-redux'
+import { RootReducer } from '../../store'
 import { Link, useParams } from 'react-router-dom'
 
 import { BannerProfile, Imagem, Items, SubTitle, Title } from './styles'
 
 import logo from '../../assets/images/logo.svg'
 import banner from '../../assets/images/fundo.png'
-import { useEffect, useState } from 'react'
-import { Foods } from '../../Pages/Home'
+import { open } from '../../store/reducers/cart'
+import { useGetMenuQuery } from '../../services/api'
 
 const ProductProfile = () => {
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const dispatch = useDispatch()
   const { id } = useParams()
+  const { data: menu } = useGetMenuQuery(id ?? '')
 
-  const [foods, setFoods] = useState<Foods>()
+  const openCart = () => {
+    dispatch(open())
+  }
 
-  useEffect(() => {
-    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
-      .then((res) => res.json())
-      .then((res) => setFoods(res))
-  }, [id])
-
-  return (
-    <>
-      <BannerProfile style={{ backgroundImage: `url(${banner})` }}>
-        <div className="container">
-          <Items>
-            <li>
-              <h4>Restaurantes</h4>
-            </li>
-            <li>
-              <Link to="/">
-                <img src={logo} alt="Efood" />
-              </Link>
-            </li>
-            <li>
-              <a href="#">0 produto(s) no carrinho</a>
-            </li>
-          </Items>
-        </div>
-      </BannerProfile>
-      <Imagem style={{ backgroundImage: `url(${foods?.capa})` }}>
-        <div className="container">
-          <SubTitle>{foods?.tipo}</SubTitle>
-          <Title>{foods?.titulo}</Title>
-        </div>
-      </Imagem>
-    </>
-  )
+  if (menu) {
+    return (
+      <>
+        <BannerProfile style={{ backgroundImage: `url(${banner})` }}>
+          <div className="container">
+            <Items>
+              <li>
+                <h4>Restaurantes</h4>
+              </li>
+              <li>
+                <Link to="/">
+                  <img src={logo} alt="Efood" />
+                </Link>
+              </li>
+              <li className="cart" onClick={openCart}>
+                {items.length} produto(s) no carrinho
+              </li>
+            </Items>
+          </div>
+        </BannerProfile>
+        <Imagem style={{ backgroundImage: `url(${menu.capa})` }}>
+          <div className="container">
+            <SubTitle>{menu.tipo}</SubTitle>
+            <Title>{menu.titulo}</Title>
+          </div>
+        </Imagem>
+      </>
+    )
+  }
+  return <h4>Carregando...</h4>
 }
 
 export default ProductProfile

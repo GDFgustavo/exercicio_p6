@@ -12,10 +12,14 @@ const api = createApi({
     }),
     getMenu: builder.query<Foods, string>({
       query: (id) => `restaurantes/${id}`
+    }),
+    getCapaMenu: builder.query<Foods, string>({
+      query: (id) => `restaurantes/${id}`
     })
   })
 })
 
-export const { useGetRestaurantQuery, useGetMenuQuery } = api
+export const { useGetRestaurantQuery, useGetMenuQuery, useGetCapaMenuQuery } =
+  api
 
 export default api
