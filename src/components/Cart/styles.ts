@@ -39,6 +39,17 @@ export const Sidebar = styled.aside`
   max-width: 360px;
   width: 100%;
   overflow: auto;
+
+  h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: ${cores.bege};
+  }
+
+  .margin-bottom {
+    margin-bottom: 16px;
+  }
 `
 
 export const CartItem = styled.li`
@@ -88,4 +99,46 @@ export const Prices = styled.p`
   font-size: 14px;
   font-weight: 700;
   color: ${cores.bege};
+`
+
+export const Row = styled.div`
+  display: flex;
+  column-gap: 34px;
+`
+
+export const InputGroup = styled.div`
+  label {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: ${cores.bege};
+  }
+
+  input {
+    padding: 8px;
+    height: 32px;
+    margin-bottom: 8px;
+    background-color: ${cores.bege};
+    border: 1px solid ${cores.bege};
+    color: #4b4b4b;
+    width: 100%;
+    font-size: 14px;
+    font-weight: 700;
+
+    &.max-width {
+      width: 228px;
+    }
+  }
+`
+
+export const OrderPlaced = styled.div`
+  margin-bottom: 24px;
+
+  p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 24px;
+    color: ${cores.bege};
+  }
 `
