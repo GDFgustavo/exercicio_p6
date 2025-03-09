@@ -6,10 +6,11 @@ import { CardapioItem } from '../Home'
 import { useParams } from 'react-router-dom'
 import ProductList from '../../components/ProductList'
 import { useGetMenuQuery } from '../../services/api'
+import Loader from '../../components/Loader'
 
 const Profile = () => {
   const { id } = useParams()
-  const { data: menu } = useGetMenuQuery(id ?? '')
+  const { data: menu, isLoading: isLoadingMenu } = useGetMenuQuery(id ?? '')
 
   const [selectedProduct, setSelectedProduct] = useState<CardapioItem>()
 
@@ -29,6 +30,7 @@ const Profile = () => {
           onClick={openModal}
           foods={[]}
           cardapio={menu.cardapio}
+          isLoading={isLoadingMenu}
         />
         {selectedProduct && (
           <ProductDetails details={selectedProduct} onClick={closeModal} />
@@ -36,7 +38,7 @@ const Profile = () => {
       </>
     )
   }
-  return <h4>Carregando...</h4>
+  return <Loader />
 }
 
 export default Profile

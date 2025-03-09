@@ -1,6 +1,7 @@
 import ProductList from '../../components/ProductList'
 import Header from '../../components/Header'
 import { useGetRestaurantQuery } from '../../services/api'
+import Loader from '../../components/Loader'
 
 export type CardapioItem = {
   foto: string
@@ -23,7 +24,8 @@ export type Foods = {
 }
 
 const Home = () => {
-  const { data: restaurant } = useGetRestaurantQuery()
+  const { data: restaurant, isLoading: isLoadingRestaurant } =
+    useGetRestaurantQuery()
 
   if (restaurant) {
     return (
@@ -34,11 +36,12 @@ const Home = () => {
           grid={'two'}
           type="restaurant"
           cardapio={[]}
+          isLoading={isLoadingRestaurant}
         />
       </>
     )
   }
-  return <h4>Carregando...</h4>
+  return <Loader />
 }
 
 export default Home

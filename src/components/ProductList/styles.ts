@@ -5,7 +5,7 @@ export const Container = styled.section`
   padding: 80px;
 `
 
-export const List = styled.ul<Omit<Props, 'foods' | 'cardapio'>>`
+export const List = styled.ul<Omit<Props, 'foods' | 'cardapio' | 'isLoading'>>`
   display: grid;
   grid-template-columns: ${(props) =>
     props.grid === 'two' ? '1fr 1fr ' : 'repeat(3, 320px)'};

@@ -23,6 +23,7 @@ import { CardapioItem } from '../../Pages/Home'
 import InputMask from 'react-input-mask'
 import { clear } from '../../store/reducers/cart'
 import { useNavigate } from 'react-router-dom'
+import Loader from '../Loader'
 
 const Cart = () => {
   const [cartCheckout, setCartCheckout] = useState(1)
@@ -380,7 +381,7 @@ const Cart = () => {
                 <Button onClick={finallyCart}>Concluir</Button>
               </>
             ) : (
-              ''
+              <Loader />
             )}
           </>
         )}
