@@ -50,6 +50,13 @@ export const Sidebar = styled.aside`
   .margin-bottom {
     margin-bottom: 16px;
   }
+
+  .empyt-text {
+    font-size: 14px;
+    line-height: 22px;
+    color: ${cores.bege};
+    text-align: center;
+  }
 `
 
 export const CartItem = styled.li`
@@ -120,7 +127,7 @@ export const InputGroup = styled.div`
     height: 32px;
     margin-bottom: 8px;
     background-color: ${cores.bege};
-    border: 1px solid ${cores.bege};
+    border: 2px solid ${cores.bege};
     color: #4b4b4b;
     width: 100%;
     font-size: 14px;
@@ -128,6 +135,11 @@ export const InputGroup = styled.div`
 
     &.max-width {
       width: 228px;
+      border: 2px solid red;
+    }
+
+    &.error {
+      border: 2px solid red;
     }
   }
 `
